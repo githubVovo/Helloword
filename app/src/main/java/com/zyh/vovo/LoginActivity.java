@@ -9,7 +9,6 @@ import com.zyh.vovo.base.BaseActivity;
 public class LoginActivity extends BaseActivity {
     @Override
     protected void initUI() {
-        setContentView(R.layout.activity_login);
     }
 
     @Override
@@ -20,5 +19,10 @@ public class LoginActivity extends BaseActivity {
     @Override
     protected void initListener() {
 
+    }
+
+    @Override
+    public int setLayoutId() {
+        return R.layout.activity_login;
     }
 }

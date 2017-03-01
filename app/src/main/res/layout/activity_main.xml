@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:clipChildren="false"
     tools:context="com.zyh.vovo.MainActivity">
 
 
@@ -22,11 +23,11 @@
         android:layout_alignParentBottom="true"
         android:background="#fff"
         jp:BadgeDraggable="true"
-        android:clipChildren="false"
         jp:BadgeMargin="5dp"
         jp:BadgePadding="4dp"
         jp:BadgeTextSize="10dp"
         jp:TabAnimate="Jump"
+        jp:TabMiddleIcon="@mipmap/circle"
         jp:TabHeight="56dp" />
 
 </LinearLayout>

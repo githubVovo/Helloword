@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
@@ -22,7 +22,7 @@ import java.util.Stack;
  * Created by DELL-002 on 2017/2/6.
  */
 
-public abstract class BaseActivity extends FragmentActivity implements
+public abstract class BaseActivity extends AppCompatActivity implements
         EasyPermissions.PermissionCallbacks {
     /**
      * 用来保存所有已打开的Activity
@@ -45,12 +45,20 @@ public abstract class BaseActivity extends FragmentActivity implements
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         // 将activity推入栈中
         listActivity.push(this);
+
+        setContentView(setLayoutId());
+        initPresenter();
         // 初始化ui
         initUI();
         // 初始化数据
         initData();
         // 事件监听
         initListener();
+    }
+
+    //选择性实现
+    protected void initPresenter() {
+
     }
 
     /**
@@ -200,6 +208,8 @@ public abstract class BaseActivity extends FragmentActivity implements
      * 权限回调接口
      */
     private CheckPermListener mListener;
+
+    public abstract int setLayoutId() ;
 
     public interface CheckPermListener {
         //权限通过后的回调方法
