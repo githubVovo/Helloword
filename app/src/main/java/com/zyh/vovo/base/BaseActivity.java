@@ -3,7 +3,6 @@ package com.zyh.vovo.base;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
@@ -11,19 +10,15 @@ import android.view.View;
 import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
 
-import com.zyh.vovo.R;
-import com.zyh.vovo.permission.EasyPermissions;
 import com.zyh.vovo.utils.ToastUtils;
 
-import java.util.List;
 import java.util.Stack;
 
 /**
  * Created by DELL-002 on 2017/2/6.
  */
 
-public abstract class BaseActivity extends AppCompatActivity implements
-        EasyPermissions.PermissionCallbacks {
+public abstract class BaseActivity extends AppCompatActivity {
     /**
      * 用来保存所有已打开的Activity
      */
@@ -43,10 +38,10 @@ public abstract class BaseActivity extends AppCompatActivity implements
 
         // 设置activity为无标题栏
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        // 将activity推入栈中
-        listActivity.push(this);
 
         setContentView(setLayoutId());
+        // 将activity推入栈中
+        listActivity.push(this);
         initPresenter();
         // 初始化ui
         initUI();
@@ -200,77 +195,7 @@ public abstract class BaseActivity extends AppCompatActivity implements
         return super.onKeyDown(keyCode, event);
     }
 
-
-
-    //--------------权限
-    protected static final int RC_PERM = 123;
-    /**
-     * 权限回调接口
-     */
-    private CheckPermListener mListener;
-
-    public abstract int setLayoutId() ;
-
-    public interface CheckPermListener {
-        //权限通过后的回调方法
-        void superPermission();
-    }
-
-    public void checkPermission(CheckPermListener listener, int resString, String... mPerms) {
-        mListener = listener;
-        if (EasyPermissions.hasPermissions(this, mPerms)) {
-            if (mListener != null)
-                mListener.superPermission();
-        } else {
-            EasyPermissions.requestPermissions(this, getString(resString),
-                    RC_PERM, mPerms);
-        }
-    }
-
-    /**
-     * 用户权限处理,
-     * 如果全部获取, 则直接过.
-     * 如果权限缺失, 则提示Dialog.
-     *
-     * @param requestCode  请求码
-     * @param permissions  权限
-     * @param grantResults 结果
-     */
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-
-        EasyPermissions.onRequestPermissionsResult(requestCode, permissions, grantResults, this);
-    }
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if (requestCode == EasyPermissions.SETTINGS_REQ_CODE) {
-            //设置返回
-        }
-    }
-
-
-    @Override
-    public void onPermissionsGranted(int requestCode, List<String> perms) {
-        //同意了某些权限可能不是全部
-    }
-
-    @Override
-    public void onPermissionsAllGranted() {
-        if (mListener != null)
-            mListener.superPermission();//同意了全部权限的回调
-    }
-
-    @Override
-    public void onPermissionsDenied(int requestCode, List<String> perms) {
-
-        EasyPermissions.checkDeniedPermissionsNeverAskAgain(this,
-                getString(R.string.perm_tip),
-                R.string.setting, R.string.cancel, null, perms);
-    }
+    public abstract int setLayoutId();
 
 
 }

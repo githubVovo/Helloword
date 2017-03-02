@@ -43,7 +43,7 @@ public class MainActivity extends BaseActivity implements OnTabSelectListener {
 
     @Override
     protected void initUI() {
-        StatusBarUtil.setTranslucent(this, 0);
+        StatusBarUtil.setTranslucent(this, 120);
         tabbar=  (JPTabBar) findViewById(R.id.activity_tabbar);
         activityVP=  (ViewPager) findViewById(R.id.activity_viewpager);
 

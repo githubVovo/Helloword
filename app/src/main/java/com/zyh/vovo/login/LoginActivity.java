@@ -1,5 +1,6 @@
-package com.zyh.vovo;
+package com.zyh.vovo.login;
 
+import com.zyh.vovo.R;
 import com.zyh.vovo.base.BaseActivity;
 
 /**
@@ -7,6 +8,11 @@ import com.zyh.vovo.base.BaseActivity;
  */
 
 public class LoginActivity extends BaseActivity {
+    @Override
+    public int setLayoutId() {
+        return R.layout.activity_login;
+    }
+
     @Override
     protected void initUI() {
     }
@@ -21,8 +27,5 @@ public class LoginActivity extends BaseActivity {
 
     }
 
-    @Override
-    public int setLayoutId() {
-        return R.layout.activity_login;
-    }
+
 }
