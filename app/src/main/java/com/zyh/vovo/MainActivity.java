@@ -47,6 +47,7 @@ public class MainActivity extends BaseActivity implements OnTabSelectListener {
         tabbar=  (JPTabBar) findViewById(R.id.activity_tabbar);
         activityVP=  (ViewPager) findViewById(R.id.activity_viewpager);
 
+
         firstFragment = new FirstFragment();
         essayFragment = new EssayFragment();
         meFragment = new MeFragment();
