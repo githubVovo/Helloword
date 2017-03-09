@@ -19,6 +19,8 @@ import android.content.Context;
 
 import com.zyh.vovo.utils.Utils;
 
+import cn.bmob.v3.Bmob;
+
 
 public class MyApplication extends Application {
 
@@ -34,6 +36,10 @@ public class MyApplication extends Application {
         super.onCreate();
         Utils.init(this);
         applicationContext = this.getApplicationContext();
+
+        //第一：默认初始化
+        Bmob.initialize(this, "1043872c43580fe504659fea79aeb629");
+
     }
 
 

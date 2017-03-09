@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <style name="Base.App.Theme.NoTitle" parent="Base.Theme.AppCompat.Light">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+    <!--新账户中心-->
+    <style name="Account_Base.App.Theme.NoTitle" parent="Base.App.Theme.NoTitle">
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="android:windowFullscreen">true</item>
+    </style>
+
+
+</resources>

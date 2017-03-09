@@ -8,7 +8,9 @@ android {
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        //**兼容Android6.0系统所需，如果这句话报错，可在dependencies标签下使用compile 'cn.bmob.android:http-legacy:1.0'**
+        useLibrary 'org.apache.http.legacy'
+
     }
     buildTypes {
         release {
@@ -24,15 +26,19 @@ android {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
+
     compile 'com.android.support:appcompat-v7:25.1.0'
     testCompile 'junit:junit:4.12'
     compile 'com.jpeng:JPTabBar:1.1.4'
     compile 'com.jaeger.statusbaruitl:library:1.0.0'
-    compile 'io.reactivex:rxandroid:1.1.0'
-    compile 'io.reactivex:rxjava:1.1.0'
-   /* classpath 'com.android.databinding:dataBinder:1.0-rc0'
-    compile 'com.android.tools.build:gradle-core:2.2.0'*/
+/*    compile 'io.reactivex:rxandroid:1.1.0'
+    compile 'io.reactivex:rxjava:1.1.0'*/
+
+    //bmob-sdk：Bmob的android sdk包，包含了Bmob的数据存储、文件等服务，以下是最新的bmob-sdk:
+    compile 'cn.bmob.android:bmob-sdk:3.5.0'
+
+    //如果你想应用能够兼容Android6.0，请添加此依赖(org.apache.http.legacy.jar)
+    compile 'cn.bmob.android:http-legacy:1.0'
+
+
 }
