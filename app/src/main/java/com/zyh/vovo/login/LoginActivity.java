@@ -119,7 +119,8 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
     private void userRegister() {
 
 
-        
+
+
     }
 
     private void login() {
